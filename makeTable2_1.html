@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>makeTable2_1</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Training Tracer</h1>
+            <h2>Pull One More</h2>
+        </header>
+        <section class="contents">
+            <h3>Make Your Training!</h3>
+            <form action="displayTable_1.html">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>
+                                Training Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                How many pull?(Only Number)
+                            </th>
+                            <th>
+                                How many set?(Only Number)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" name="trainingName">
+                            </td>
+                            <td>
+                                <select name="trainingType">
+                                    <option disabled selected>--- select an option ---</option>
+                                    <option value="pyramid">pyramid</option>
+                                    <option value="static">static</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="pullNum">
+                            </td>
+                            <td>
+                                <input type="number" name="setNum">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit">
+            </form>
+        </section>        
+    </div>
+</body>
+</html>
