@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>displayTable_3</title>
+    <meta charset="utf-8">
+</head>
+<body>
+        <div class="container">
+        <header>
+            <h1>Training Tracer</h1>
+            <h2>Pull One More</h2>
+        </header>
+        <section class="contents">
+            <h3>Start Training!</h3>
+                <table border="1">
+                <thead>
+                    <tr>
+                        <th>
+                            Training Name
+                        </th>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Pull / Set
+                        </th>
+                        <th>
+                            Set
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="training">
+                </tbody>
+            </table>
+        </section>        
+    </div>
+<script type="text/javascript">
+//    makeTable2_2.html 에서 form 태그로 넘겨준 입력값을 파싱한다.
+    var options = location.search.substring(1).split('&');
+
+    for(var i = 0; i < (options.length / 4); i++) {
+        var trainingName = options[(i*4)].split('=')[1];
+        var trainingType = options[(1+(i*4))].split('=')[1];
+        var pullPerSet = options[(2+(i*4))].split('=')[1];
+        var setNum = options[(3+(i*4))].split('=')[1];
+        
+//        표의 트레이닝 부분 작성
+        if(trainingType === 'static') {
+            var tBody = document.getElementById('training');
+            var firstRow = document.createElement('tr'); //1행 생성
+            var firstCol = document.createElement('td'); //1행 1열 생성
+            firstCol.innerHTML = trainingName;
+            firstCol.setAttribute('rowspan', setNum);
+            firstRow.appendChild(firstCol);
+            var secondCol = document.createElement('td'); //1행 2열 생성
+            secondCol.innerHTML = trainingType;
+            secondCol.setAttribute('rowspan', setNum);
+            firstRow.appendChild(secondCol);
+            var thirdCol = document.createElement('td'); //1행 3열 생성
+            thirdCol.innerHTML = pullPerSet;
+            firstRow.appendChild(thirdCol);
+            var fourthCol = document.createElement('td'); //1행 4열 생성
+            fourthCol.innerHTML = '1<input type="checkbox">';
+            firstRow.appendChild(fourthCol);
+            tBody.appendChild(firstRow);
+            for(var j = 1; j < Number(setNum); j++){
+                (function(){
+                    var rpRow = document.createElement('tr');
+                    var rpFirstCol = document.createElement('td');
+                    rpFirstCol.innerHTML = pullPerSet;
+                    rpRow.appendChild(rpFirstCol);
+                    var rpSecondCol = document.createElement('td');
+                    rpSecondCol.innerHTML = String(j + 1) + '<input type="checkbox">';
+                    rpRow.appendChild(rpSecondCol);
+                    tBody.appendChild(rpRow);
+                })();
+            }
+        } else if(trainingType === 'pyramid') {
+            var tBody = document.getElementById('training');
+            var firstRow = document.createElement('tr'); //1행 생성
+            var firstCol = document.createElement('td'); //1행 1열 생성
+            firstCol.innerHTML = trainingName;
+            firstCol.setAttribute('rowspan', setNum);
+            firstRow.appendChild(firstCol);
+            var secondCol = document.createElement('td'); //1행 2열 생성
+            secondCol.innerHTML = trainingType;
+            secondCol.setAttribute('rowspan', setNum);
+            firstRow.appendChild(secondCol);
+            var thirdCol = document.createElement('td'); //1행 3열 생성
+            var inText = '';
+            for(var k = 0; k < Number(pullPerSet); k++) {
+                inText = inText + String(k + 1) + '<input type="checkbox"> ';
+            }
+            thirdCol.innerHTML = inText;
+            firstRow.appendChild(thirdCol);
+            var fourthCol = document.createElement('td'); //1행 4열 생성
+            fourthCol.innerHTML = '1<input type="checkbox">';
+            firstRow.appendChild(fourthCol);
+            tBody.appendChild(firstRow);
+            for(var j = 1; j < Number(setNum); j++){
+                (function(){
+                    var rpRow = document.createElement('tr');
+                    var rpFirstCol = document.createElement('td');
+                    rpFirstCol.innerHTML = inText;
+                    rpRow.appendChild(rpFirstCol);
+                    var rpSecondCol = document.createElement('td');
+                    rpSecondCol.innerHTML = String(j + 1) + '<input type="checkbox">';
+                    rpRow.appendChild(rpSecondCol);
+                    tBody.appendChild(rpRow);
+                })();
+            }
+        }
+    }
+</script>
+</body>
+</html>
