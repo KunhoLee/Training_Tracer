@@ -32,6 +32,7 @@
                 <tbody id="training">
                 </tbody>
             </table>
+            <input type="button" value="Back!" id="goBack">
         </section>        
     </div>
 <script type="text/javascript">
@@ -111,6 +112,12 @@
             }
         }
     }
+    
+//    goBack 버튼 누르면 index.html 페이지로 돌아감
+    var backbt = document.getElementById('goBack');
+    backbt.addEventListener('click', function(){
+        location.href = './index.html';
+    });
 </script>
 </body>
 </html>
