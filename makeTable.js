@@ -1,6 +1,13 @@
 (function () {
     'use strict';
-    var rowNum = location.search.substring(1).split('=')[1], tBody = document.getElementById('tBody'), createdRow, createdCol1, createdCol2, createdCol3, createdCol4, i;
+    var rowNum = location.search.substring(1).split('=')[1],
+        tBody = document.getElementById('tBody'),
+        createdRow,
+        createdCol1,
+        createdCol2,
+        createdCol3,
+        createdCol4,
+        i;
     for (i = 0; i < Number(rowNum); i += 1) {
         createdRow = document.createElement('tr');
         createdCol1 = document.createElement('td');
